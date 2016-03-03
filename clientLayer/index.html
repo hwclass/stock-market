@@ -2,6 +2,14 @@
 <html>
 	<head></head>
   <body>
+  	<script>
+  		var source = new EventSource('localhost:8080/api/v1/stocks');
+  		source.addEventListener('message', function(e) {
+	        console.log((new Date()).toLocaleTimeString() + ' : message fetched.');
+	        //founders = JSON.parse(e.data);
+	        console.dir(e);
+	      }, false);
+  	</script>
     index.html
   </body>
 </html>

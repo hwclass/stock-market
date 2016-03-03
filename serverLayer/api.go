@@ -50,16 +50,9 @@ func main() {
    v1.GET("/stocks", GetStocks)
   }
 
-  /*
-  res.writeHead(200, {
-    'content-type': 'text/event-stream',
-    'cache-control': 'no-cache',
-    'connection': 'keep-alive'
-  });
-  console.dir(JSON.stringify(founders));
-  res.write('id: ' + (new Date()).toLocaleTimeString() + '\n');
-  res.write("data: " + JSON.stringify(founders) + '\n\n');
-  */
+  r.Use(static.Serve("/clientLayer")) // static files have higher priority over dynamic routes
+  
+  r.NotFound(static.Serve("/clientLayer"))
 
   r.Run(":8080")
 
