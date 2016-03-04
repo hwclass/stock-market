@@ -1,0 +1,33 @@
+{
+  "name": "clientlayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-sparklines": "^1.4.2",
+    "webpack": "^1.12.14"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.25",
+    "chai": "^3.3.0",
+    "jsdom": "^3.1.2",
+    "mocha": "^2.3.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "webpack": "^1.10.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "peerDependencies": {
+    "react": ">=0.13.3 || ^0.14.0-rc1"
+  },
+  "scripts": {
+    "compile": "webpack",
+    "start": "webpack-dev-server --progress"
+  },
+  "author": "",
+  "license": "ISC"
+}

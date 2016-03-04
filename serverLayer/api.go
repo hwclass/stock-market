@@ -2,6 +2,9 @@ package main
 
 import (
   "github.com/gin-gonic/gin"
+  "encoding/json"
+  "fmt"
+  "time"
 )
 
 type Stock struct {
@@ -11,26 +14,22 @@ type Stock struct {
 } 
 
 func GetStocks(c *gin.Context) {
-  c.Writer.Header().Add("Access-Control-Allow-Origin", "*")
-  c.Writer.Header().Add("content-type", "*")
   c.Writer.Header().Add("cache-control", "no-cache")
   c.Writer.Header().Add("connection", "keep-alive")
+  c.Writer.Header().Add("content-type", "text/event-stream")
   type Stocks []Stock
-  var stocks = Stocks{
+  stocks := Stocks{
     Stock{Firm: "facebook", Data: "Oliver"},
     Stock{Firm: "apple", Data: "Malcom"},
   }
-  c.Next()
-  c.JSON(200, stocks)
-}
-
-/*
-func EventStream() gin.HandlerFunc {
-  return func(c *gin.Context) {
-    
+  result, err := json.Marshal(stocks)
+  if err != nil {
+    fmt.Println("error:", err)
   }
+  c.String(200, "id: " + time.Now().Local().String() + "\n")
+  c.String(200, "data: " + string(result) + "\n")
+  c.Done()
 }
-*/
 
 func Cors() gin.HandlerFunc {
   return func(c *gin.Context) {
@@ -38,22 +37,17 @@ func Cors() gin.HandlerFunc {
     c.Next()
   }
 }
-
+  
 func main() {
-
-  r := gin.Default()
-
-  r.Use(Cors())
-
-  v1 := r.Group("api/v1")
+  router := gin.Default()
+  router.Use(Cors())
+  v1 := router.Group("api/v1") 
   {
    v1.GET("/stocks", GetStocks)
   }
 
-  r.Use(static.Serve("/clientLayer")) // static files have higher priority over dynamic routes
-  
-  r.NotFound(static.Serve("/clientLayer"))
+  router.Static("/app", "../clientLayer")
 
-  r.Run(":8080")
-
+  // Listen and server on 0.0.0.0:8080
+  router.Run(":3000")
 }

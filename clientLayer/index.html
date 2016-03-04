@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
+	<head>
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet"> 
+  </head>
   <body>
-  	<script>
-  		var source = new EventSource('localhost:8080/api/v1/stocks');
-  		source.addEventListener('message', function(e) {
-	        console.log((new Date()).toLocaleTimeString() + ' : message fetched.');
-	        //founders = JSON.parse(e.data);
-	        console.dir(e);
-	      }, false);
-  	</script>
-    index.html
+    <header>
+      <div class="content">
+        <h1>Stock Market</h1>
+        <div id="headersparklines"></div>
+      </div>
+    </header>
+    <div class="content">
+      
+      <h2>Simple</h2>
+      <div class="row">
+        <div id="simple"></div>
+      </div>
+
+      <h2>Customizable</h2>
+      <div class="row">
+        <div>
+          <span id="customizable1"></span>
+          <span id="customizable2"></span>
+          <span id="customizable3"></span>
+          <span id="customizable4"></span>
+          <span id="customizable5"></span>
+          <span id="customizable6"></span>
+        </div>
+      </div>
+
+    </div>
+    <script src="client.build.js"></script>
+    <script>
+            
+      var EventSourceStreamData;
+    
+        var source = new EventSource('http://localhost:3000/api/v1/stocks');
+        source.addEventListener('message', function(e) {
+            console.log((new Date()).toLocaleTimeString() + ' : message fetched.');
+            console.dir(JSON.parse(e.data.data));
+            EventSourceStreamData = (function () {
+              return {
+                data : JSON.parse(e.data.data)
+              }
+            }());
+          }, false);
+      
+    </script>
   </body>
 </html>
