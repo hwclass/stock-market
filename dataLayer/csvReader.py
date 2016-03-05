@@ -23,7 +23,7 @@ s = sched.scheduler(time.time, time.sleep)
 
 # scheduler method
 def get_data(sc): 
-    print "Getting data..." + datetime.time(datetime.now())
+    print "Getting data..." + str(datetime.now().time())
     tempListOfData = []
     for currentFirm in firmData:
     	if currentFirm:
