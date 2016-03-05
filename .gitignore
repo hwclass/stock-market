@@ -63,3 +63,4 @@ target/
 
 stock-market
 clientLayer/node_modules
+clientLayer/client.build.js
