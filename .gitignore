@@ -64,3 +64,4 @@ target/
 stock-market
 clientLayer/node_modules
 clientLayer/client.build.js
+persistanceLayer/redis-lua-2.0.4-1.src.rock
