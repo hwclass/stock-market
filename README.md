@@ -28,5 +28,6 @@ An experimental application trying to realize polyglotism
 * server.go is a simple static file server to run the index.html file to represent the data and the user interface together.
 
 ###Client Layer
-*index.html is the main file to show the charts. React and React Sparklines are used to show the data's history in the view side.
+* index.html is the main file to show the charts. React and React Sparklines are used to show the data's history in the view side.
+* client.js, contains the js code for the components of React
 
