@@ -30,12 +30,98 @@ function randomData(n = 30) {
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
 
-class Simple extends React.Component {
+class FacebookChartForOpenData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
     render() {
         return (
-            <Sparklines data={EventSourceStreamData} width={300} height={150}>
-                <SparklinesLine />
-            </Sparklines>
+            <div>
+                <h4>Open</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class FacebookChartForHighData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>High</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class FacebookChartForLowData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Low</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class FacebookChartForCloseData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Close</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class FacebookChartForVolumeData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Volume</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class FacebookChartForAdjData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Adj</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
         );
     }
 }
@@ -102,7 +188,12 @@ class Customizable6 extends React.Component {
 }
 
 const demos = {
-  'simple': Simple,
+  'facebookChartForOpenData': FacebookChartForOpenData,
+  'facebookChartForHighData': FacebookChartForHighData,
+  'facebookChartForLowData': FacebookChartForLowData,
+  'facebookChartForCloseData': FacebookChartForCloseData,
+  'facebookChartForVolumeData': FacebookChartForVolumeData,
+  'facebookChartForAdjData': FacebookChartForAdjData,
   'customizable1': Customizable1,
   'customizable2': Customizable2,
   'customizable3': Customizable3,

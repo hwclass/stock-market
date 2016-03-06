@@ -4,11 +4,18 @@
    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet"> 
    <script>
       var EventSourceStreamData,
-          source = new EventSource('http://localhost:3000/api/v1/stocks');      
+          store = [{alias : 'facebook', data : 0}, {alias : 'apple', data : 0}, {alias : 'google', data : 0}, {alias : 'yahoo', data : 0}],
+          source = new EventSource('http://localhost:3000/api/v1/stocks'),
+          sourceIndex = 0;   
       source.addEventListener('message', function(e) {
           console.log((new Date()).toLocaleTimeString() + ' : message fetched.');
-          console.dir(JSON.parse(JSON.stringify(e.data)));
-          //console.dir(atob(e.data));
+          if (sourceIndex <= store.length - 1) { 
+            store[sourceIndex].data = e.data;
+            sourceIndex++;
+            if (sourceIndex === store.length - 1) {
+              sourceIndex = 0
+            }
+          }
           EventSourceStreamData = (function () {
             return {
               data : JSON.parse(e.data)
@@ -24,21 +31,16 @@
         <div id="headersparklines"></div>
       </div>
     </header>
+    <!--Open, High, Low, Close, Volume, Adj-->
     <div class="content">
-      <h2>Simple</h2>
+      <h2>Facebook</h2>
       <div class="row">
-        <div id="simple"></div>
-      </div>
-      <h2>Customizable</h2>
-      <div class="row">
-        <div>
-          <span id="customizable1"></span>
-          <span id="customizable2"></span>
-          <span id="customizable3"></span>
-          <span id="customizable4"></span>
-          <span id="customizable5"></span>
-          <span id="customizable6"></span>
-        </div>
+        <div id="facebookChartForOpenData" style="float:left;"></div>
+        <div id="facebookChartForHighData" style="float:left;"></div>
+        <div id="facebookChartForLowData" style="float:left;"></div>
+        <div id="facebookChartForCloseData" style="float:left;"></div>
+        <div id="facebookChartForVolumeData" style="float:left;"></div>
+        <div id="facebookChartForAdjData" style="float:left;"></div>
       </div>
     </div>
     <script src="client.build.js"></script>

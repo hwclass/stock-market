@@ -28,15 +28,25 @@ def get_data(sc):
     # creating a pub/sub channel for redis
     for currentFirm in firmData:
         if currentFirm:
+            firstTwoLinesCounter = 1
+            firstTwoLinesOfCsv = True
             conn.request('GET', currentFirm.alias['url'])
             csvFile = conn.getresponse().read().split()
             reader = csv.reader(csvFile)
             for row in reader:
                 if row:
-                    #Rows as Date, Open, High, Low, Close, Volume, AdjClose
+                    #Rows as Date, Open, High, Low, Close, Volume, Adj
+                    if firstTwoLinesOfCsv:
+                        if firstTwoLinesCounter < 2:
+                            firstTwoLinesCounter += 1
+                            continue
+                        else:
+                            firstTwoLinesOfCsv = False
+                            continue   
                     tempListOfData.append(row)
             redisClient.set(currentFirm.alias['alias'], str(json.dumps(tempListOfData, separators=(',',':'))))
-            redisClient.publish('data:stock_market', tempListOfData)
+            # temp_reversed_array = tempListOfData.reverse()
+            redisClient.publish('data:'+currentFirm.alias['alias']+':stock_market', tempListOfData)
             tempListOfData = []
     conn.close()
     s.enter(60, 1, get_data, (s,))

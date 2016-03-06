@@ -91,6 +91,7 @@ func (broker *Broker) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		// Write to the ResponseWriter
 		// Server Sent Events compatible
+		// fmt.Fprintf(rw, "id: %s\n", <-messageChan)
 		fmt.Fprintf(rw, "data: %s\n\n", <-messageChan)
 
 		// Flush the data immediatly instead of buffering it for later.
@@ -160,13 +161,25 @@ func main() {
 	//redisClient.Flush()
 
 	psc := redis.PubSubConn{redisClient}
-	psc.Subscribe("data:stock_market")
 
+	//creating an iteration over the companies
+
+	var aliases [4]string
+	aliases[0] = "apple"
+	aliases[1] = "facebook"
+	aliases[2] = "google"
+	aliases[3] = "yahoo"
+
+	aliasLength := len(aliases)
+
+	for aliasIndex := 0; aliasIndex < aliasLength; aliasIndex++ {
+		psc.Subscribe("data:"+aliases[aliasIndex]+":stock_market")
+	}
+	
 	go func() {
 		for {
 			time.Sleep(time.Second * 2)
 			type Stocks []Stock
-			
 			for {
 			    switch v := psc.Receive().(type) {
 			    case redis.Message:
