@@ -15,6 +15,11 @@ An experimental application trying to realize polyglotism
 * [React](https://facebook.github.io/react/) / as client-side view and state control
 * [React Sparklines](https://github.com/borisyankov/react-sparklines) / as line chart taranta
 
+###Setup
+
+####Install
+* will be coming soon and be updated
+
 ###Technical Story
 
 ####Data Layer
