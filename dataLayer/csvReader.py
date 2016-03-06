@@ -25,20 +25,21 @@ s = sched.scheduler(time.time, time.sleep)
 def get_data(sc): 
     print "Getting data..." + str(datetime.now().time())
     tempListOfData = []
+    # creating a pub/sub channel for redis
     for currentFirm in firmData:
-    	if currentFirm:
-    		conn.request('GET', currentFirm.alias['url'])
-    		csvFile = conn.getresponse().read().split()
-    		reader = csv.reader(csvFile)
-    		for row in reader:
-    			if row:
-    				#Rows as Date, Open, High, Low, Close, Volume, AdjClose
-    				tempListOfData.append(row)
-    		redisClient.set(currentFirm.alias['alias'], json.dumps(tempListOfData, separators=(',',':')))
-    		tempListOfData = []
-
+        if currentFirm:
+            conn.request('GET', currentFirm.alias['url'])
+            csvFile = conn.getresponse().read().split()
+            reader = csv.reader(csvFile)
+            for row in reader:
+                if row:
+                    #Rows as Date, Open, High, Low, Close, Volume, AdjClose
+                    tempListOfData.append(row)
+            redisClient.set(currentFirm.alias['alias'], str(json.dumps(tempListOfData, separators=(',',':'))))
+            redisClient.publish('data:stock_market', tempListOfData)
+            tempListOfData = []
     conn.close()
-    sc.enter(60, 1, get_data, (sc,))
+    s.enter(60, 1, get_data, (s,))
 
 s.enter(60, 1, get_data, (s,))
 s.run()

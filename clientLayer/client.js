@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Sparklines, SparklinesBars, SparklinesLine, SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from 'react-sparklines';
 
 function boxMullerRandom () {
@@ -111,5 +112,5 @@ const demos = {
 };
 
 for (let d in demos) {
-    React.render(React.createElement(demos[d]), document.getElementById(d));
+    ReactDOM.render(React.createElement(demos[d]), document.getElementById(d));
 }
