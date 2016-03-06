@@ -27,7 +27,7 @@ An experimental application trying to realize polyglotism
 * sseBroker.go, is an event generator to be sent to the client-side with an event-stream model structured on Server-Sent Events. When the data comes from the publish/subscribe channel, it makes the client-side recognized that the data is currently available to use.
 * server.go is a simple static file server to run the index.html file to represent the data and the user interface together.
 
-###Client Layer
+####Client Layer
 * index.html is the main file to show the charts. React and React Sparklines are used to show the data's history in the view side.
 * client.js, contains the js code for the components of React
 
