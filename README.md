@@ -17,22 +17,81 @@ An experimental application trying to realize polyglotism
 
 ###Setup
 
-####Install
-* will be coming soon and be updated
+####Install Python
+[Link]()
 
-###Technical Story
+####Install Go
+[Link]()
+
+####Install Lua
+[Link]()
+
+####Install Node.js
+[Link]()
+
+####Install Redis
+[Link]()
+
+####Install Node.js dependencies
+```javascript
+npm install
+```
+
+###App Lifecycle
+
+* Start Redis
+```
+redis-server
+```
 
 ####Data Layer
-* CvsNotifier, parses the data from the web specified with the links in urlDispatcher.py and notifies the redis instance when the new data has come. The data is parsed every minute by requesting the endpoint.
+* csvReader, parses the data from the web specified with the links in urlDispatcher.py and notifies the redis instance when the new data has come. The data is parsed every minute by requesting the endpoint.
+
+* Start crawling by make csvReader.py started
+Description: Every minute, the python script fetches the CSV data and passes it through Redis instance. The keys are specified as the company names like 'facebook', 'google', 'apple' and 'yahoo' with their full of values. It also publishes an event over (again) Redis like this dialect: "data:facebook:stock_market'". 
+```python
+python csvReader.py
+```
+
 
 ####Persistance Layer
 * eventManager.lua, follow the tracks of the updated data on the working redis instance and make it print into the terminal for monitoring pusposes. This can also be implemented with another UI tool to wath what is happening right there 
+
+* Start monitoring by make eventManager.lua started
+Description: This Lua script is an experimental thing. It listens the events published through Redis instance and pushes the whole data every minute when the events fired onto the terminal.
+```lua
+lua eventManager.lua
+```
 
 ####Server Layer
 * sseBroker.go, is an event generator to be sent to the client-side with an event-stream model structured on Server-Sent Events. When the data comes from the publish/subscribe channel, it makes the client-side recognized that the data is currently available to use.
 * server.go is a simple static file server to run the index.html file to represent the data and the user interface together.
 
+* Start serving the local clientLayer/index.html page by make static.go started
+Description: Here we have two important file to activate server and server-sent event supported API endpoint. Broker here passes data with "event-stream" value of "Content-Type" when every event fired in the Redis instance to the client-side. This also serves a static file called index.html containing the server-sent event listener as an event binding.
+```go
+go run sseBroker.go
+```
+
+
 ####Client Layer
 * index.html is the main file to show the charts. React and React Sparklines are used to show the data's history in the view side.
 * client.js, contains the js code for the components of React
+
+* Start bundling tool to compile the client-side files
+Description: Here I use webpack to bundle the client files and its dialects. ES6 and its features used with React and React Sparklines libraries. It generates a bundle file called client.bundle.js.
+```javascript
+npm run compile
+```
+
+* Start bundling server to serve the client-side starter file, clientLayer/index.html.
+Description: It will generate a bundle file called clientLayer/client.bundle.js
+```go
+npm run start
+```
+
+* Open the browser and hit 
+```javascript
+localhost:8000/app/
+```
 
