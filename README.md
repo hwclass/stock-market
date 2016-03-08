@@ -17,20 +17,17 @@ An experimental application trying to realize polyglotism
 
 ###Setup
 
-####Install Python
-[Link]()
+####Install Python [Link](https://www.python.org/downloads/)
 
-####Install Go
-[Link]()
+####Install Go [Link](https://golang.org/dl/)
 
-####Install Lua
-[Link]()
+####Install Lua [Link](http://www.lua.org/download.html)
 
-####Install Node.js
-[Link]()
+###Install LuaRocks [Link](https://github.com/keplerproject/luarocks/wiki/Installation-instructions-for-Mac-OS-X)
 
-####Install Redis
-[Link]()
+####Install Node.js [Link](https://nodejs.org/en/download/)
+
+####Install Redis [Link](http://redis.io/download)
 
 ####Install Node.js dependencies
 ```javascript
