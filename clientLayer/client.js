@@ -126,6 +126,294 @@ class FacebookChartForAdjData extends React.Component {
     }
 }
 
+class AppleChartForOpenData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Open</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class AppleChartForHighData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>High</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class AppleChartForLowData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Low</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class AppleChartForCloseData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Close</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class AppleChartForVolumeData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Volume</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class AppleChartForAdjData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Adj</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForOpenData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Open</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForHighData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>High</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForLowData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Low</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForCloseData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Close</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForVolumeData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Volume</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class GoogleChartForAdjData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Adj</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForOpenData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Open</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForHighData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>High</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForLowData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Low</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForCloseData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Close</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForVolumeData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Volume</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
+class YahooChartForAdjData extends React.Component {
+    state = {
+        open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],
+    }
+    render() {
+        return (
+            <div>
+                <h4>Adj</h4>
+                <Sparklines data={this.state.open} width={200} height={150}>
+                    <SparklinesLine color="#1c8cdc"/>
+                </Sparklines>
+            </div>
+        );
+    }
+}
+
 class Customizable1 extends React.Component {
     render() {
         return (
@@ -194,6 +482,24 @@ const demos = {
   'facebookChartForCloseData': FacebookChartForCloseData,
   'facebookChartForVolumeData': FacebookChartForVolumeData,
   'facebookChartForAdjData': FacebookChartForAdjData,
+  'appleChartForOpenData': AppleChartForOpenData,
+  'appleChartForHighData': AppleChartForHighData,
+  'appleChartForLowData': AppleChartForLowData,
+  'appleChartForCloseData': AppleChartForCloseData,
+  'appleChartForVolumeData': AppleChartForVolumeData,
+  'appleChartForAdjData': AppleChartForAdjData,
+  'googleChartForOpenData': GoogleChartForOpenData,
+  'googleChartForHighData': GoogleChartForHighData,
+  'googleChartForLowData': GoogleChartForLowData,
+  'googleChartForCloseData': GoogleChartForCloseData,
+  'googleChartForVolumeData': GoogleChartForVolumeData,
+  'googleChartForAdjData': GoogleChartForAdjData,
+  'yahooChartForOpenData': YahooChartForOpenData,
+  'yahooChartForHighData': YahooChartForHighData,
+  'yahooChartForLowData': YahooChartForLowData,
+  'yahooChartForCloseData': YahooChartForCloseData,
+  'yahooChartForVolumeData': YahooChartForVolumeData,
+  'yahooChartForAdjData': YahooChartForAdjData,
   'customizable1': Customizable1,
   'customizable2': Customizable2,
   'customizable3': Customizable3,
