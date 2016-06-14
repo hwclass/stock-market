@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 	"github.com/garyburd/redigo/redis"
+	//Stock "./structs/Stock"
 )
 
 //	"encoding/json"
