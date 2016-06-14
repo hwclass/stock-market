@@ -30,6 +30,45 @@ function randomData(n = 30) {
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
 
+class Section extends React.Component {
+    render() {
+        return (
+            <li id="{this.props.facebook}"></li>
+        )
+    }
+}
+
+class Sections extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sections: [{
+                facebook: {
+                    data: null
+                },
+                apple: {
+                    data: null
+                },
+                google: {
+                    data: null
+                },
+                yahoo: {
+                    data: null
+                } 
+            }]
+        }
+    }
+    this.state.sections.map(section => {
+        render() {
+            return (
+                <ul>
+                    <Section>{section.facebook.data}</Section>
+                </ul>
+            )
+        }
+    })
+}
+
 class FacebookChartForOpenData extends React.Component {
     state = {
         open : [32.34453, 27.120001, 43.347, 23.56734, 21.908877, 33.445692],

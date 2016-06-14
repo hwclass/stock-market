@@ -128,6 +128,7 @@ func main() {
 	if err != nil {
         log.Println(err)
     }
+    
 	defer redisClient.Close()
 
 	psc := redis.PubSubConn{redisClient}
