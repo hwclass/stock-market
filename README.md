@@ -17,31 +17,26 @@ An experimental application trying to realize polyglotism
 
 ###Setup
 
-####Install Python [Link](https://www.python.org/downloads/)
+#####Install
+[Python](https://www.python.org/downloads/)
+[LuaRocks](https://github.com/keplerproject/luarocks/wiki/Installation-instructions-for-Mac-OS-X)
+[Lua](http://www.lua.org/download.html)
+[Redis](http://redis.io/download)
+[Go](https://golang.org/dl/)
+[Node](https://nodejs.org/en/download/)
 
-####Install Go [Link](https://golang.org/dl/)
-
-####Install Lua [Link](http://www.lua.org/download.html)
-
-###Install LuaRocks [Link](https://github.com/keplerproject/luarocks/wiki/Installation-instructions-for-Mac-OS-X)
-
-####Install Node.js [Link](https://nodejs.org/en/download/)
-
-####Install Redis [Link](http://redis.io/download)
-
-####Install Node.js dependencies
+#####Install Node Dependencies
 ```javascript
 npm install
 ```
 
-###App Lifecycle
-
+#####App Lifecycle
 * Start Redis
 ```
 redis-server
 ```
 
-####Data Layer
+#####Data Layer
 * csvReader, parses the data from the web specified with the links in urlDispatcher.py and notifies the redis instance when the new data has come. The data is parsed every minute by requesting the endpoint.
 
 * Start crawling by make csvReader.py started
@@ -50,8 +45,7 @@ Description: Every minute, the python script fetches the CSV data and passes it 
 python csvReader.py
 ```
 
-
-####Persistance Layer
+#####Monitoring Layer
 * eventManager.lua, follow the tracks of the updated data on the working redis instance and make it print into the terminal for monitoring pusposes. This can also be implemented with another UI tool to wath what is happening right there 
 
 * Start monitoring by make eventManager.lua started
@@ -60,7 +54,7 @@ Description: This Lua script is an experimental thing. It listens the events pub
 lua eventManager.lua
 ```
 
-####Server Layer
+#####Server Layer
 * sseBroker.go, is an event generator to be sent to the client-side with an event-stream model structured on Server-Sent Events. When the data comes from the publish/subscribe channel, it makes the client-side recognized that the data is currently available to use.
 * server.go is a simple static file server to run the index.html file to represent the data and the user interface together.
 
@@ -70,8 +64,7 @@ Description: Here we have two important file to activate server and server-sent 
 go run sseBroker.go
 ```
 
-
-####Client Layer
+#####Client Layer
 * index.html is the main file to show the charts. React and React Sparklines are used to show the data's history in the view side.
 * client.js, contains the js code for the components of React
 
@@ -87,7 +80,7 @@ Description: It will generate a bundle file called clientLayer/client.bundle.js
 npm run start
 ```
 
-* Open the browser and hit 
+* Open the browser and hit:
 ```javascript
 localhost:8000/app/
 ```
