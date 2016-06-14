@@ -2,19 +2,19 @@ package.path = package.path .. ";../src/?.lua"
 
 require 'redis'
 
-local params = {
-	host = '127.0.0.1',
-	port = '6379'
-}
+aliases = require ('config/aliases')
+--[[
+  print(aliases.apple)
+  -- Now we have got the aliases for the database colums
+  -- prints `apple`
+--]]
 
-local aliases = {
-  apple = 'apple',
-  facebook = 'facebook',
-  google = 'google',
-  yahoo = 'yahoo'
-}
-
-print(aliases.apple)
+params = require ('config/params')
+--[[
+  print(params.port)
+  -- Here we have the parameters as localhost and port
+  -- prints `6379`
+--]]
 
 local redis = Redis.connect(params)
 --redis:select(15) -- for tests
