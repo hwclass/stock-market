@@ -26,7 +26,7 @@
   },
   "scripts": {
     "compile": "webpack",
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress --inline --colors"
   },
   "author": "",
   "license": "ISC"
