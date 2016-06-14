@@ -6,10 +6,7 @@ import (
 	"net/http"
 	"time"
 	"github.com/garyburd/redigo/redis"
-	//Stock "./structs/Stock"
 )
-
-//	"encoding/json"
 
 type Broker struct {
 
@@ -25,17 +22,6 @@ type Broker struct {
 	// Client connections registry
 	clients map[chan []byte]bool
 }
-
-/*
-func NewRedis() {
-	redisClient := &redis.Options{
-		Addr:     "localhost:6379",
-	    Password: "",
-	    DB:       0, 
-	}
-	return
-}
-*/
 
 func NewServer() (broker *Broker) {
 	// Instantiate a broker
@@ -55,7 +41,6 @@ func NewServer() (broker *Broker) {
 func (broker *Broker) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	// Make sure that the writer supports flushing.
-	//
 	flusher, ok := rw.(http.Flusher)
 
 	if !ok {
@@ -138,33 +123,16 @@ func main() {
 
 	broker := NewServer()
 
-	/*
-	redisClient := redis.NewClient(&redis.Options{
-        Addr:     "localhost:6379",
-        Password: "", // no password set
-        DB:       0,  // use default DB
-    })
-    */
-
-	//log.Println(redisClient)
-
-	//redisClient.Subscribe('data:stock_market')
-	//pubsub, err := redis.NewTCPClient(":6379","",-1).PubSubClient()
 	redisClient, err := redis.Dial("tcp", ":6379")
+	
 	if err != nil {
         log.Println(err)
     }
 	defer redisClient.Close()
-	//psc := redisClient.PubSubConn{}
-	//pubsub, err := redisClient.Subscribe("data:stock_market")
-
-	//redisClient.Send("SUBSCRIBE", "data:stock_market")
-	//redisClient.Flush()
 
 	psc := redis.PubSubConn{redisClient}
 
 	//creating an iteration over the companies
-
 	var aliases [4]string
 	aliases[0] = "apple"
 	aliases[1] = "facebook"
@@ -184,14 +152,10 @@ func main() {
 			for {
 			    switch v := psc.Receive().(type) {
 			    case redis.Message:
-			        //fmt.Printf("%s: message: %s\n", v.Channel, v.Data)
-			        //log.Println(v)
 			        stocks := v.Data
-			        //result, err := json.Marshal(stocks)
 			        if err != nil {
 			        	fmt.Println("error:", err)
 			        }
-			        //result2 := fmt.Sprintf(string(result))
 			        log.Println("Receiving event")
 			        broker.Notifier <- []byte(stocks)
 			    case redis.Subscription:
@@ -201,9 +165,6 @@ func main() {
 
 		}
 	}()
-
-	//http.Handle("/", http.FileServer(http.Dir("../clientLayer")))
-    //http.ListenAndServe(":3000", nil)
 
 	log.Fatal("HTTP server error: ", http.ListenAndServe("localhost:3000", broker))
 
