@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Sparklines, SparklinesBars, SparklinesLine, SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from 'react-sparklines';
 
-function boxMullerRandom () {
+const boxMullerRandom = () => {
     let phase = false,
         x1, x2, w, z;
 
@@ -21,14 +21,12 @@ function boxMullerRandom () {
             return x2 * w;
         }
     })();
-}
-
-function randomData(n = 30) {
+},
+randomData = () => (n = 30) {
     return Array.apply(0, Array(n)).map(boxMullerRandom);
-}
-
-const sampleData = randomData(30);
-const sampleData100 = randomData(100);
+},
+sampleData = randomData(30),
+sampleData100 = randomData(100);
 
 class Section extends React.Component {
     render() {
