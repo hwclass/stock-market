@@ -18,12 +18,12 @@ An experimental application trying to realize polyglotism
 ###Setup
 
 #####Install
-[Python](https://www.python.org/downloads/)
-[LuaRocks](https://github.com/keplerproject/luarocks/wiki/Installation-instructions-for-Mac-OS-X)
-[Lua](http://www.lua.org/download.html)
-[Redis](http://redis.io/download)
-[Go](https://golang.org/dl/)
-[Node](https://nodejs.org/en/download/)
+* [Python](https://www.python.org/downloads/)
+* [LuaRocks](https://github.com/keplerproject/luarocks/wiki/Installation-instructions-for-Mac-OS-X)
+* [Lua](http://www.lua.org/download.html)
+* [Redis](http://redis.io/download)
+* [Go](https://golang.org/dl/)
+* [Node](https://nodejs.org/en/download/)
 
 #####Install Node Dependencies
 ```javascript
