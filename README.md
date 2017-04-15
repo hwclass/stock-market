@@ -81,7 +81,7 @@ npm run start
 ```
 
 * Open the browser and hit:
-```javascript
+```
 localhost:8000/app/
 ```
 
